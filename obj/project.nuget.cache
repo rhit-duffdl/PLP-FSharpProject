@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "MH+LFhhCEOJsnANY+B1293GnwxtVwZjH55GKBTqnO5/o87zXfb3CAH6kQRX2rOJ6C0/SfZe175YZRrxnSjD0jA==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\duffdl\\Desktop\\F# Project\\Main\\WeatherApp.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\duffdl\\.nuget\\packages\\fsharp.core\\7.0.200\\fsharp.core.7.0.200.nupkg.sha512",
+    "C:\\Users\\duffdl\\.nuget\\packages\\suave\\2.6.2\\suave.2.6.2.nupkg.sha512"
+  ],
+  "logs": []
+}
