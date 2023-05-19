@@ -77,9 +77,9 @@ let generateMsg (msg : string) =
 
 let sendEmail body =
     if weatherHasChanged body then
-        let apiKey = "qwerty" //"I can't explicitly put it here, it will suspend my account"
-        let senderEmail = "zhuz9@rose-hulman.edu"
-        let recipientEmail = "zhexuan.clint@gmail.com"
+        let apiKey = "" //"I can't explicitly put it here, it will suspend my account"
+        let senderEmail = "duffman2332@gmail.com"
+        let recipientEmail = "duffdl@rose-hulman.edu"
         let subject = "Weather Notification from F#"
         let client = new SendGridClient(apiKey)
         let from = new EmailAddress(senderEmail, "F# Weather Notification")

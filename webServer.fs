@@ -18,7 +18,7 @@ let sendApiRequest () =
     let httpClient = new System.Net.Http.HttpClient()
     let response = httpClient.GetAsync(apiEndpoint).Result
     let content = response.Content.ReadAsStringAsync().Result
-    printfn "API Response: %s" content
+    // printfn "API Response: %s" content
     let emailMsg = generateMsg content
     sendEmail emailMsg
 
@@ -27,7 +27,7 @@ let startApiRequestTimer () =
         TimerCallback(fun _ -> sendApiRequest()),
         null,
         TimeSpan.Zero,
-        TimeSpan.FromSeconds(30)  // Adjust the interval as needed
+        TimeSpan.FromSeconds(10)  // Adjust the interval as needed
     )
     timer
 

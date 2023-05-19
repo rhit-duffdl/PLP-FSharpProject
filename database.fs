@@ -11,21 +11,25 @@ type User = {
     zip:string
 }
 
-let user_info_path = "UserInfo.txt"
-let last_data_path = "LastData.txt"
+let currentDirectory = Directory.GetCurrentDirectory()
+let user_info_path = Path.Combine(currentDirectory, "UserInfo.txt")
+let last_data_path = Path.Combine(currentDirectory, "LastData.txt")
+
+
+
 
 let writeData text = 
     File.WriteAllText(last_data_path, text)
 
-let getLastData = 
+let getLastData () = 
     File.ReadAllText(last_data_path)
 
-let getUserEmail =
+let getUserEmail() =
     let userText = File.ReadAllText(user_info_path)
     let user = JsonSerializer.Deserialize<User> userText
     user.email
 
-let getUserZIP =
+let getUserZIP() =
     let userText = File.ReadAllText(user_info_path)
     let user = JsonSerializer.Deserialize<User> userText
     user.zip
@@ -44,6 +48,6 @@ let setUserZIP newZIP =
 
 let weatherHasChanged update = 
     setUserZIP "47803"
-    let oldWeather = getLastData
+    let oldWeather = getLastData()
     writeData update
     not (update.Equals(oldWeather))
