@@ -1,0 +1,9 @@
+<h3>Weather information for Terre Haute:
+</h3><h3>Region: Indiana
+</h3><h3>Country: USA
+</h3><h3>Temperature: 15.6 °C (60.1 °F)
+</h3><h3>Condition: Clear
+</h3><h3>Wind: 3.6 kph from N
+</h3><h3>Humidity: 67%
+</h3><h3>Visibility: 16.0 km (9.0 miles)
+</h3>

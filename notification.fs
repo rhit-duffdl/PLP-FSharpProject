@@ -7,8 +7,9 @@ open System
 open SendGrid
 open SendGrid.Helpers.Mail
 //open System.Text.RegularExpressions
-open Newtonsoft.Json
-open Newtonsoft.Json.Linq
+open System.Text.Json
+
+open Database
 
 type Location = {
     name: string
@@ -57,8 +58,8 @@ type WeatherInfo = {
     current: Current
 }
 
-let generateMsg msg =
-    let json = JsonConvert.DeserializeObject<WeatherInfo>(msg)
+let generateMsg (msg : string) =
+    let json = JsonSerializer.Deserialize<WeatherInfo> msg
     let location = json.location
     let current = json.current
 
@@ -75,15 +76,18 @@ let generateMsg msg =
     message
 
 let sendEmail body =
-    let apiKey = //"I can't explicitly put it here, it will suspend my account"
-    let senderEmail = "zhuz9@rose-hulman.edu"
-    let recipientEmail = "zhexuan.clint@gmail.com"
-    let subject = "Weather Notification from F#"
-    let client = new SendGridClient(apiKey)
-    let from = new EmailAddress(senderEmail, "F# Weather Notification")
-    let to' = new EmailAddress(recipientEmail)
-    let content = new Content(body, body) // Specify both plain text and HTML content
-    let msg = MailHelper.CreateSingleEmail(from, to',subject, body, body)
-    let response = client.SendEmailAsync(msg).Result
-    printfn "Email sent with status code: %A" response.StatusCode
+    if weatherHasChanged body then
+        printfn "Weather has not changed. No email sent."
+    else 
+        let apiKey = "qwerty" //"I can't explicitly put it here, it will suspend my account"
+        let senderEmail = "zhuz9@rose-hulman.edu"
+        let recipientEmail = "zhexuan.clint@gmail.com"
+        let subject = "Weather Notification from F#"
+        let client = new SendGridClient(apiKey)
+        let from = new EmailAddress(senderEmail, "F# Weather Notification")
+        let to' = new EmailAddress(recipientEmail)
+        let content = new Content(body, body) // Specify both plain text and HTML content
+        let msg = MailHelper.CreateSingleEmail(from, to',subject, body, body)
+        let response = client.SendEmailAsync(msg).Result
+        printfn "Email sent with status code: %A" response.StatusCode
 
