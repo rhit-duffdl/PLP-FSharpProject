@@ -47,7 +47,6 @@ let setUserZIP newZIP =
     File.WriteAllText(user_info_path, JsonSerializer.Serialize newUser)
 
 let weatherHasChanged update = 
-    setUserZIP "47803"
     let oldWeather = getLastData()
     writeData update
     not (update.Equals(oldWeather))
