@@ -9,6 +9,7 @@ open Suave.Successful
 open System
 open System.Threading
 open Notification
+open Database
 
 let api_key = "b2d0c12ba7c445fa8d130308231205"
 
@@ -22,12 +23,21 @@ let sendApiRequest () =
     let emailMsg = generateMsg content
     sendEmail emailMsg
 
+let handlePostRequest : WebPart =
+    request (fun (ctx : HttpRequest) ->
+        let email: Choice<string,string> = ctx.queryParam "email"
+        match email with
+        | Choice1Of2 addr -> setUserEmail addr
+        | Choice2Of2 _ -> failwith "Invalid email"
+        OK "Updated email"
+    )
+
 let startApiRequestTimer () =
     let timer = new Timer(
         TimerCallback(fun _ -> sendApiRequest()),
         null,
         TimeSpan.Zero,
-        TimeSpan.FromSeconds(10)  // Adjust the interval as needed
+        TimeSpan.FromSeconds(5)  // Adjust the interval as needed
     )
     timer
 
@@ -48,10 +58,10 @@ let runWebServer argv =
 
         choose
             [ GET >=> choose [ path "/" >=> OK "Hello World!" ]
-              POST >=> choose [ path "/" >=> OK "Request Received" ] ]
+              POST >=> choose [ path "/" >=> handlePostRequest ] 
+              ]
 
     let apiRequestTimer = startApiRequestTimer()
-
 
 
 
@@ -60,6 +70,8 @@ let runWebServer argv =
     finally
         apiRequestTimer.Dispose()
 
+
+
 [<EntryPoint>]
 
 let main argv =
@@ -67,3 +79,4 @@ let main argv =
     runWebServer argv
 
     0
+
