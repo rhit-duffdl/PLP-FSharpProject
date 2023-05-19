@@ -33,16 +33,17 @@ let getUserZIP =
 let setUserEmail newEmail =
     let userText = File.ReadAllText(user_info_path)
     let user = JsonSerializer.Deserialize<User>(userText)
-    user.email = newEmail
-    File.WriteAllText(user_info_path, JsonSerializer.Serialize user)
+    let newUser= {email = newEmail; zip=user.zip}
+    File.WriteAllText(user_info_path, JsonSerializer.Serialize newUser)
 
 let setUserZIP newZIP =
     let userText = File.ReadAllText(user_info_path)
     let user = JsonSerializer.Deserialize<User>(userText)
-    user.zip = newZIP
-    File.WriteAllText(user_info_path, JsonSerializer.Serialize user)
+    let newUser = {email = user.email; zip=newZIP}
+    File.WriteAllText(user_info_path, JsonSerializer.Serialize newUser)
 
 let weatherHasChanged update = 
+    setUserZIP "47803"
     let oldWeather = getLastData
     writeData update
     update.Equals(oldWeather)
