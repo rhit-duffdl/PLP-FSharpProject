@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\duffdl\\Desktop\\F# Project\\Main\\WeatherApp.fsproj": {}
+    "C:\\Users\\zhuz9\\Desktop\\Rose\\CSSE403\\FinalProject\\PLP-FSharpProject\\WeatherApp.fsproj": {}
   },
   "projects": {
-    "c:\\Users\\duffdl\\Desktop\\F# Project\\Main\\WeatherApp.fsproj": {
+    "C:\\Users\\zhuz9\\Desktop\\Rose\\CSSE403\\FinalProject\\PLP-FSharpProject\\WeatherApp.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\duffdl\\Desktop\\F# Project\\Main\\WeatherApp.fsproj",
+        "projectUniqueName": "C:\\Users\\zhuz9\\Desktop\\Rose\\CSSE403\\FinalProject\\PLP-FSharpProject\\WeatherApp.fsproj",
         "projectName": "WeatherApp",
-        "projectPath": "c:\\Users\\duffdl\\Desktop\\F# Project\\Main\\WeatherApp.fsproj",
-        "packagesPath": "C:\\Users\\duffdl\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\duffdl\\Desktop\\F# Project\\Main\\obj\\",
+        "projectPath": "C:\\Users\\zhuz9\\Desktop\\Rose\\CSSE403\\FinalProject\\PLP-FSharpProject\\WeatherApp.fsproj",
+        "packagesPath": "C:\\Users\\zhuz9\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zhuz9\\Desktop\\Rose\\CSSE403\\FinalProject\\PLP-FSharpProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\duffdl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\zhuz9\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -38,6 +38,16 @@
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
               "version": "[7.0.200, )",
+              "generatePathProperty": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )",
+              "generatePathProperty": true
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.1, )",
               "generatePathProperty": true
             },
             "Suave": {

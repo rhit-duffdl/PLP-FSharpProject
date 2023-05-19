@@ -8,6 +8,8 @@ open Suave.Successful
 
 open System
 open System.Threading
+open Notification
+
 let api_key = "b2d0c12ba7c445fa8d130308231205"
 
 let apiEndpoint = "http://api.weatherapi.com/v1/current.json?key=b2d0c12ba7c445fa8d130308231205&q=47803&aqi=no"
@@ -17,6 +19,8 @@ let sendApiRequest () =
     let response = httpClient.GetAsync(apiEndpoint).Result
     let content = response.Content.ReadAsStringAsync().Result
     printfn "API Response: %s" content
+    let emailMsg = generateMsg content
+    sendEmail emailMsg
 
 let startApiRequestTimer () =
     let timer = new Timer(
