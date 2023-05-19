@@ -77,8 +77,6 @@ let generateMsg (msg : string) =
 
 let sendEmail body =
     if weatherHasChanged body then
-        printfn "Weather has not changed. No email sent."
-    else 
         let apiKey = "qwerty" //"I can't explicitly put it here, it will suspend my account"
         let senderEmail = "zhuz9@rose-hulman.edu"
         let recipientEmail = "zhexuan.clint@gmail.com"
@@ -90,4 +88,6 @@ let sendEmail body =
         let msg = MailHelper.CreateSingleEmail(from, to',subject, body, body)
         let response = client.SendEmailAsync(msg).Result
         printfn "Email sent with status code: %A" response.StatusCode
+    else 
+        printfn "Weather has not changed. No email sent."
 

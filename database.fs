@@ -46,4 +46,4 @@ let weatherHasChanged update =
     setUserZIP "47803"
     let oldWeather = getLastData
     writeData update
-    update.Equals(oldWeather)
+    not (update.Equals(oldWeather))
